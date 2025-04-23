@@ -1,6 +1,7 @@
 package interfaces;
 
 import modelo.Nodo;
+import modelo.Vehiculo;
 
 public interface IListaAutos {
 	
@@ -10,20 +11,19 @@ public interface IListaAutos {
 	
 	
 	// agregar
-	public void agregarUltimo(int d); // Cola - Pila
-	public void agregarPrimero(int d);
-	public void agregarGenerico(int d, int pos);
+	public void agregarUltimo(Vehiculo d);
+	public void agregarPrimero(Vehiculo d);
 	
 	//eliminar
-	public int eliminar(int pos);
-	public int eliminarPrimero(); // Cola
-	public int eliminarUltimo();// Pila
+	public int eliminarPrimero(); 
 	
 	//obtener elemento, solo visualizarlo
-	public int obtenerPrimero();// Cola
-	public int obtenerUltimo();//Pila
 	public int obtenerGenerico(int pos);
 	
-	
+	// extras
+	public void mostrarLista();
+	public int cantidadElementos();
+	public void imprimirDesdeFinal() ;
+	public void insertarAntesDe(String patenteReferencia, Vehiculo nuevoVehiculo);
 	
 }

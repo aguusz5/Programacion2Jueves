@@ -10,7 +10,7 @@ public class TestLista {
 		Persona p = new Persona (47180937, "Agus Leal"); // Se crea la lista nula
 		Vehiculo v = new Vehiculo ("31AE345", "Ford Ranger");
 		Vehiculo a = new Vehiculo ("98BR344", "Fiat Toro");
-		Vehiculo b = new Vehiculo ("11AR111", "Bugatti Veyron");
+		Vehiculo b = new Vehiculo ("1}1AR111", "Bugatti Veyron");
 		
 		p.getListaVehiculos().agregarPrimero(v);		
 		p.getListaVehiculos().agregarPrimero(a);
