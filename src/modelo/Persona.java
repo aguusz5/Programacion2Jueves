@@ -1,12 +1,16 @@
 package modelo;
 
-public class Persona {
+
+import interfaces.IPersona;
+import interfaces.IListaAutos;
+
+public class Persona implements IPersona {
 	
 	
 	private int dni;
 	private String nombre;
 	// La persona debe estar anidada a los vehiculos, lo hacemos por medio de una lista
-	private ListaAutos listaVehiculos;
+	private IListaAutos listaVehiculos;
 	
 	
 	
@@ -22,10 +26,10 @@ public class Persona {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public ListaAutos getListaVehiculos() {
+	public IListaAutos getListaVehiculos() {
 		return listaVehiculos;
 	}
-	public void setListaVehiculos(ListaAutos listaVehiculos) {
+	public void setListaVehiculos(IListaAutos listaVehiculos) {
 		this.listaVehiculos = listaVehiculos;
 	}
 	

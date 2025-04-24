@@ -8,9 +8,9 @@ public class TestLista {
 	public static void main(String[]args) {
 		
 		Persona p = new Persona (47180937, "Agus Leal"); // Se crea la lista nula
-		Vehiculo v = new Vehiculo ("31AE345", "Ford Ranger");
-		Vehiculo a = new Vehiculo ("98BR344", "Fiat Toro");
-		Vehiculo b = new Vehiculo ("1}1AR111", "Bugatti Veyron");
+		Vehiculo v = new Vehiculo ("AA303AU", "Ford Ranger");
+		Vehiculo a = new Vehiculo ("AA375AF", "Fiat Toro");
+		Vehiculo b = new Vehiculo ("AB867AN", "Bugatti Veyron");
 		
 		p.getListaVehiculos().agregarPrimero(v);		
 		p.getListaVehiculos().agregarPrimero(a);
@@ -30,7 +30,11 @@ public class TestLista {
 		
 		p.getListaVehiculos().imprimirDesdeFinal();
 
-		p.getListaVehiculos().insertarAntesDe("11AR111", new Vehiculo("28TY382", "Toyota Corolla"));
+		p.getListaVehiculos().insertarAntesDe("AB867AN", new Vehiculo("AD213AV", "Toyota Corolla"));
+		
+		p.mostrarPersona();
+		
+		p.getListaVehiculos().ordenarAutos();
 		
 		p.mostrarPersona();
 

@@ -1,6 +1,8 @@
 package modelo;
 
-public class Vehiculo {
+import interfaces.IVehiculo;
+
+public class Vehiculo implements IVehiculo {
 	
 	private String patente;
 	private String modelo;

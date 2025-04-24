@@ -1,50 +1,53 @@
 package modelo;
 
-public class Nodo {
+import interfaces.INodo;
+import interfaces.IVehiculo;
+
+public class Nodo implements INodo{
 	
 	//Atributos
-	private Vehiculo dato;
-	private Nodo siguiente;
-	private Nodo anterior;
+	private IVehiculo dato;
+	private INodo siguiente;
+	private INodo anterior;
 	
 	
-	public Vehiculo getDato() {
+	public IVehiculo getDato() {
 		return dato;
 	}
 
 
 
-	public void setDato(Vehiculo dato) {
+	public void setDato(IVehiculo dato) {
 		this.dato = dato;
 	}
 
 
 
-	public Nodo getSiguiente() {
+	public INodo getSiguiente() {
 		return siguiente;
 	}
 
 
 
-	public void setSiguiente(Nodo siguiente) {
-		this.siguiente = siguiente;
+	public void setSiguiente(INodo nodo) {
+		this.siguiente = nodo;
 	}
 
 
 
-	public Nodo getAnterior() {
+	public INodo getAnterior() {
 		return anterior;
 	}
 
 
 
-	public void setAnterior(Nodo anterior) {
-		this.anterior = anterior;
+	public void setAnterior(INodo nodo) {
+		this.anterior = nodo;
 	}
 
 
 
-	public Nodo(Vehiculo dato) {
+	public Nodo(IVehiculo dato) {
 		super();
 		this.dato = dato;
 		this.siguiente = null;

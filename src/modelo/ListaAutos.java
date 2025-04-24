@@ -1,9 +1,15 @@
 package modelo;
 
-public class ListaAutos {
+
+import interfaces.IListaAutos;
+import interfaces.INodo;
+import interfaces.IVehiculo;
+
+
+public class ListaAutos implements IListaAutos{
 	
 	// Atributos
-	private Nodo primero;
+	private INodo primero;
 
 	public boolean estaVacia() {
 		
@@ -11,8 +17,50 @@ public class ListaAutos {
 	}
 	
 	
-	public void agregarPrimero(Vehiculo d) {
-		Nodo nuevoNodo = new Nodo(d);
+	@Override
+	public void ordenarAutos() {
+		if (!estaVacia()) {
+			
+			boolean huboCambios= true;
+			
+			while ( huboCambios == true) {
+				
+				huboCambios= false;
+				INodo actual = primero;
+				
+				while (actual.getSiguiente() != null) {
+					
+					IVehiculo v1= actual.getDato();
+					IVehiculo v2= actual.getSiguiente().getDato();
+					
+					if (v1.getPatente().compareTo(v2.getPatente()) >0 ) {
+						
+						IVehiculo temp= actual.getDato();
+						actual.setDato(actual.getSiguiente().getDato());
+						actual.getSiguiente().setDato(temp);
+						huboCambios= true;
+					}
+					
+					actual = actual.getSiguiente();
+				}
+			
+				
+			}
+			
+			
+			
+		}else {
+			System.out.println("La lista esta vacia");
+			return;
+		}
+		
+		
+		
+	}
+	
+	@Override
+	public void agregarPrimero(IVehiculo d) {
+		INodo nuevoNodo = new Nodo(d);
 		if(estaVacia()== false) {
 			nuevoNodo.setSiguiente(this.primero);
 			primero.setAnterior(nuevoNodo);
@@ -25,10 +73,10 @@ public class ListaAutos {
 		
 	}
 	
-	
+	@Override
 	public void mostrarLista() {
 		
-		Nodo actual = primero;
+		INodo actual = primero;
 		while (actual != null) {
 			// getDato--- del nodo--- vehiculo!!!!
 			System.out.print(actual.getDato()+"\n");
@@ -38,12 +86,12 @@ public class ListaAutos {
 	
 	
 	
-	
-	public void agregarUltimo(Vehiculo d) {
-		Nodo nuevoNodo= new Nodo(d);
+	@Override
+	public void agregarUltimo(IVehiculo d) {
+		INodo nuevoNodo= new Nodo(d);
 		
 		if (!estaVacia()) {
-			Nodo actual= this.primero;
+			INodo actual= this.primero;
 			
 			while(actual.getSiguiente()!= null) {
 				
@@ -59,13 +107,13 @@ public class ListaAutos {
 		}
 		
 		
-		
+	@Override	
 	public int cantidadElementos() {
 		if(estaVacia()) {
 			return 0;
 		}else {
 			int cantidad = 1;
-			Nodo actual= this.primero;
+			INodo actual= this.primero;
 			while(actual.getSiguiente()!=null) {
 				actual = actual.getSiguiente();
 				cantidad++;
@@ -74,11 +122,11 @@ public class ListaAutos {
 		
 		}
 	}
-	
-	public Vehiculo obtenerGenerico(int pos) {
+	@Override
+	public IVehiculo obtenerGenerico(int pos) {
 		if(!estaVacia() && pos <cantidadElementos()) {
 			int contador= 0;
-			Nodo actual= this.primero;
+			INodo actual= this.primero;
 			while(contador!=pos) {
 				actual = actual.getSiguiente();
 				contador ++;
@@ -91,10 +139,10 @@ public class ListaAutos {
 	
 	}
 	
-	
-	public Vehiculo eliminarPrimero() {
+	@Override
+	public IVehiculo eliminarPrimero() {
 		if(!estaVacia()) {
-			Vehiculo datoEliminar= primero.getDato();
+			IVehiculo datoEliminar= primero.getDato();
 			primero= primero.getSiguiente();
 			primero.setAnterior(null);
 			return datoEliminar;
@@ -103,10 +151,10 @@ public class ListaAutos {
 			return null;
 		}
 	}
-	
+	@Override
 	public void imprimirDesdeFinal() {
 		if(!estaVacia()) {
-			Nodo actual = primero;
+			INodo actual = primero;
 			while(actual.getSiguiente()!= null) {
 				
 				actual = actual.getSiguiente();
@@ -121,22 +169,22 @@ public class ListaAutos {
 			}
 		}	
 	}
-
-	public void insertarAntesDe(String patenteReferencia, Vehiculo nuevoVehiculo) {
+	@Override
+	public void insertarAntesDe(String patenteReferencia, IVehiculo nuevoVehiculo) {
 		if(!estaVacia()) {
 			
-			Nodo actual = primero;
+			INodo actual = primero;
 			
 			while(actual != null) {
-				Vehiculo vehiculoActual= (Vehiculo) actual.getDato();
+				IVehiculo vehiculoActual= (IVehiculo) actual.getDato();
 				if(vehiculoActual.getPatente() == patenteReferencia) {
-					Nodo nuevoNodo = new Nodo(nuevoVehiculo);
+					INodo nuevoNodo = new Nodo(nuevoVehiculo);
 					if(actual == primero) {
 						primero.setAnterior(nuevoNodo);
 						nuevoNodo.setSiguiente(primero);
 						primero= nuevoNodo;
 					}else {
-						Nodo anterior = actual.getAnterior();
+						INodo anterior = actual.getAnterior();
 						anterior.setSiguiente(nuevoNodo);
 						nuevoNodo.setAnterior(anterior);
 						nuevoNodo.setSiguiente(actual);
@@ -165,15 +213,15 @@ public class ListaAutos {
 	
 
 	
-	public Nodo getPrimero() {
+	public INodo getPrimero() {
 		return primero;
 	}
 
-	public void setPrimero(Nodo primero) {
+	public void setPrimero(INodo primero) {
 		this.primero = primero;
 	}
 
-	public ListaAutos(Nodo primero) {
+	public ListaAutos(INodo primero) {
 		super();
 		this.primero = primero;
 	}

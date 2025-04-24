@@ -1,29 +1,28 @@
 package interfaces;
 
-import modelo.Nodo;
-import modelo.Vehiculo;
 
 public interface IListaAutos {
 	
-	public Nodo getPrimero();
-	public void setPrimero(Nodo primero);
+	public INodo getPrimero();
+	public void setPrimero(INodo primero);
 	public String toString();
 	
 	
 	// agregar
-	public void agregarUltimo(Vehiculo d);
-	public void agregarPrimero(Vehiculo d);
+	public void agregarUltimo(IVehiculo d);
+	public void agregarPrimero(IVehiculo d);
 	
 	//eliminar
-	public int eliminarPrimero(); 
+	public IVehiculo eliminarPrimero(); 
 	
 	//obtener elemento, solo visualizarlo
-	public int obtenerGenerico(int pos);
+	public IVehiculo obtenerGenerico(int pos);
 	
 	// extras
 	public void mostrarLista();
 	public int cantidadElementos();
 	public void imprimirDesdeFinal() ;
-	public void insertarAntesDe(String patenteReferencia, Vehiculo nuevoVehiculo);
+	public void insertarAntesDe(String patenteReferencia, IVehiculo nuevoVehiculo);
+	public void ordenarAutos();
 	
 }
